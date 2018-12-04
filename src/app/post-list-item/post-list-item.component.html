@@ -1,0 +1,38 @@
+<li [ngClass]="{'list-group-item' : true,
+				'list-group-item-success': postLoveIts > postDontLoveIts ,
+				'list-group-item-danger': postDontLoveIts > postLoveIts}" >
+	
+	<div class ="row"> 
+  		<div class="col-xs-9"><h4><strong>{{ postTitle }}</strong></h4></div>
+  		<div class="col-xs-3 text-right">
+  			<h4> <small>{{ postCreated_at | date : 'short' }}</small></h4>
+  		</div>
+  			
+	</div>
+
+	<div><p class="text-justify">{{ postContent }}</p></div>
+
+	<div class="row">
+		<div class="col-xs-8">
+			<button class="btn btn-success"
+			        (click)="onLoveIts()">
+			        <span class="glyphicon glyphicon-thumbs-up"></span>
+			        Love It 
+			        <span class="badge" *ngIf="postLoveIts > 0"> {{ postLoveIts }} </span>
+			</button>
+			<button class="btn btn-danger"
+					(click)="onDontLoveIts()">
+					<span class="glyphicon glyphicon-thumbs-down"></span> 
+					Don't love it
+					<span class="badge" *ngIf="postDontLoveIts > 0"> {{ postDontLoveIts }} </span>
+			</button>
+		</div>
+		<div class="col-xs-offset-2 col-xs-2">
+			<button class="btn btn-danger"
+					(click)="onRemove(index)">
+					<span class="glyphicon glyphicon-minus-sign"></span> Supprimer le post
+			</button>
+		</div>
+	</div>	
+
+</li>	
